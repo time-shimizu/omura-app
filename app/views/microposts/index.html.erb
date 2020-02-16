@@ -1,0 +1,28 @@
+<div class="container">
+  <header>
+    <div class="title-part">
+      <h1>大村くん</h1>
+      <hr>
+      <div class="discription">
+        <p>大村くんに色々なセリフを与えてみよう！！<p>
+        <p>噛んでくれるよ！！！</p>
+      </div>
+    </div>
+  </header>
+</div>
+<div class ="container">
+  <div class="row form-part">
+    <div class="col-md-6 omura-pic">
+      <%= image_tag'/omura.jpeg', class:"omura-img", alt: "omura-image" %>
+    </div>
+    <div class="col-md-6 post-form">
+      <%= form_for(@micropost) do |f| %>
+        <div class="field">
+          <%= f.text_area :content,size: "50x9", placeholder: "言わせたいセリフを打ってね" %>
+          <%= f.submit "言わせる", class: "say btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<hr>
