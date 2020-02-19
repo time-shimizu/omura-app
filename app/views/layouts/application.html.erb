@@ -6,10 +6,23 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru&display=swap" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class="container">
+      <header>
+        <div class="title-part">
+          <h1>大村くん</h1>
+          <hr>
+          <div class="discription">
+            <p>大村くんに色々なセリフを与えてみよう！！<p>
+            <p>噛まずに言えるかな？</p>
+          </div>
+        </div>
+      </header>
+    </div>
     <%= yield %>
   </body>
 </html>
