@@ -1,10 +1,12 @@
 class MicropostsController < ApplicationController
   def index
     @micropost = Micropost.new
+    @microposts = Micropost.page(params[:page]).per(5)
   end
 
   def show
     @micropost = Micropost.find(params[:id])
+    @microposts = Micropost.page(params[:page]).per(5)
   end
 
   def create
@@ -14,19 +16,23 @@ class MicropostsController < ApplicationController
       @micropost.save
       redirect_to @micropost
     else
+      original_content = @micropost.content
       synth = WordSynth.new
       effector = []
       effector << Effects.kami1
       effector << Effects.kami2
       effector << Effects.kami3
       effector << Effects.kami4
-      numbers = [0,0,0,0,1,1,1,1,1,1,2,3,4]
+      numbers = [0,0,0,1,1,1,1,1,1,2,3,4]
       number = numbers.sample
       effects = effector.sample(number)
       effects.each do | effect|
         synth.add_effect(effect)
       end
       @micropost.content = synth.play(@micropost.content)
+      if original_content == @micropost.content
+        @micropost.toggle(:success)
+      end
       @micropost.content += "!!"
       @micropost.save
       redirect_to @micropost

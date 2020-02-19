@@ -19,10 +19,20 @@
           <div class="discription">
             <p>大村くんに色々なセリフを与えてみよう！！<p>
             <p>噛まずに言えるかな？</p>
+            <span>同じセリフでもいろんな噛み方をするかも？</span>
           </div>
         </div>
       </header>
     </div>
     <%= yield %>
+    <hr>
+    <div class="container feed">
+      <h2><これまでの発言></h2>
+      <hr>
+      <ol>
+        <%= render @microposts %>
+      </ol>
+      <%= paginate @microposts %>
+    </div>
   </body>
 </html>

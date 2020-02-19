@@ -4,7 +4,13 @@
       <%= image_tag'/omura.jpeg', class:"omura-img", alt: "omura-image" %>
     </div>
     <div class="col-md-6 post-content">
+      <% if @micropost.success? %>
+        <span class="green_line">[成功！！]</span>
+      <% else %>
+        <span class="red_line">[残念！！]</span>
+      <% end %>
       <p><%= @micropost.content %></p>
+      <%= link_to "他のセリフを言わせる", root_path %>
     </div>
   </div>
 </div>
